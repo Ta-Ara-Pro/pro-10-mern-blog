@@ -9,12 +9,17 @@ const DashUsers = () => {
   const { currentUser } = useSelector(state => state.user)
   const [users, setUsers] = useState([])
   const [showMore, setShowMore] = useState(true)
-  console.log('user users:', users)
+  
   useEffect(() => {
+    console.log('user users:', users)
     const fetchUsers = async () => {
       try {
         const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
-        const res = await fetch(`${API_BASE_URL}/user/getusers`)
+        const res = await fetch(`${API_BASE_URL}/user/getusers`,
+          {
+             credentials: 'include'
+          }
+        )
         const data = await res.json()
         console.log(data)
         if (res.ok) {
@@ -34,7 +39,11 @@ const DashUsers = () => {
     const startIndex = users.length;
     try {
       const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
-      const res = await fetch(`${API_BASE_URL}/user/getusers?startIndex=${startIndex}`)
+      const res = await fetch(`${API_BASE_URL}/user/getusers?startIndex=${startIndex}`,
+        {
+           credentials: 'include'
+        }
+      )
       const data = await res.json()
       if (res.ok) {
         setUsers((prev) => [...prev, ...data.users])
