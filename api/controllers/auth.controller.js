@@ -49,6 +49,9 @@ export const signin = async(req, res, next) => {
             path: '/', // Ensure the cookie is sent for all requests
              }).json(rest);
 
+             console.log("Token generated:", token);
+
+
     } catch (error) {
         next(error)
     }
