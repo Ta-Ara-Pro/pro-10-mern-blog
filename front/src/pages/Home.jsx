@@ -8,10 +8,15 @@ export default function Home() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       console.log('API Base URL:', API_BASE_URL);
 
       const res = await fetch(`${API_BASE_URL}/post/getPosts`);
+      if (!res.ok) {
+  console.error('Failed to fetch posts', res.statusText);
+  return;
+}
+      
       const data = await res.json();
       setPosts(data.posts);
     };
