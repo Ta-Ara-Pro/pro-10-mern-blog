@@ -42,7 +42,10 @@ export const signin = async(req, res, next) => {
 
         const {password: pass , ...rest} = validUser._doc;
         const token = jwt.sign( { id: validUser._id , isAdmin: validUser.isAdmin } , process.env.JWT_SECRET );
-        res.status(200).cookie('access_token', token, {httpOnly: true}).json(rest);
+        res.status(200).cookie('access_token', token, {
+            httpOnly: true,
+            sameSite: 'None', // Ensure the cookie is sent across domains
+             }).json(rest);
 
     } catch (error) {
         next(error)

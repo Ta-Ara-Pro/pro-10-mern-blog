@@ -13,7 +13,11 @@ const DashComments = () => {
     const fetchComments = async () => {
       try {
         const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
-        const res = await fetch(`${API_BASE_URL}/comment/getcomments`);
+        const res = await fetch(`${API_BASE_URL}/comment/getcomments`,
+          {
+             credentials: 'include',
+          }
+        );
         const data = await res.json();
         if (res.ok) {
           setComments(data.comments);

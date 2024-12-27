@@ -20,20 +20,24 @@ const DashUsers = () => {
              credentials: 'include'
           }
         )
-        const data = await res.json()
-        console.log(data)
+       
         if (res.ok) {
-          setUsers(data.users)
+          const data = await res.json();
+          console.log(data);
+          setUsers(data.users);
           if (data.users.length < 2) {
-            setShowMore(false)
+            setShowMore(false);
           }
+        } else {
+          // Handle errors if response is not ok
+          console.error('Error fetching users:', res.statusText);
         }
       } catch (error) {
         console.log(error)
       }
     };
     if (currentUser.isAdmin) { fetchUsers() }
-  }, [currentUser._id])
+  }, [currentUser?._id])
 
   const handleShowMore = async () => {
     const startIndex = users.length;
