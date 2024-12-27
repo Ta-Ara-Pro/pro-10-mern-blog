@@ -32,7 +32,7 @@ const Signin = () => {
       dispatch(signInStart())
 
       console.log(formData)
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       const res = await fetch(`${API_BASE_URL}/auth/signin`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

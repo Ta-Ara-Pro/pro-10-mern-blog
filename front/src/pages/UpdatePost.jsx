@@ -25,7 +25,7 @@ const UpdatePost = () => {
   useEffect(() => {
     try {
       const fetchPost = async () => {
-        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
         const res = await fetch(`${API_BASE_URL}/post/getposts?postId=${postId}`);
         const data = await res.json();
         if (!res.ok) {
@@ -74,7 +74,8 @@ const UpdatePost = () => {
     banner.append('public_id', fileName)
     try {
       setImageUploadLoading(true)
-      const res = await fetch('/api/user/cloudinary', {
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
+      const res = await fetch(`${API_BASE_URL}/api/user/cloudinary`, {
         method: 'POST',
         body: banner,
         headers: {}
@@ -108,7 +109,8 @@ const UpdatePost = () => {
 
     e.preventDefault();
     try {
-      const res = await fetch(`/api/post/update/${postId}/${currentUser._id}`, {
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
+      const res = await fetch(`${API_BASE_URL}/api/post/update/${postId}/${currentUser._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

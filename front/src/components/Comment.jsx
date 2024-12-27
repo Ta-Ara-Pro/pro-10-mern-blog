@@ -13,7 +13,7 @@ const Comment = ({ comment, onLike, onEdit, onDelete }) => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
         const res = await fetch(`${API_BASE_URL}/user/${comment.userId}`);
         const data = await res.json();
         if (res.ok) {
@@ -44,7 +44,7 @@ const Comment = ({ comment, onLike, onEdit, onDelete }) => {
 console.log('comment id :', comment._id)
   const handleSave = async () => {
     try {
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       const res = await fetch(`${API_BASE_URL}/comment/editComment/${comment._id}`,
         {
         method: 'PUT',

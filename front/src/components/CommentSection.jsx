@@ -19,7 +19,7 @@ const CommentSection = ({ postId }) => {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
         const res = await fetch(`${API_BASE_URL}/comment/getPostComments/${postId}`);
         const data = await res.json();
         if (res.ok) {
@@ -50,7 +50,7 @@ const CommentSection = ({ postId }) => {
     setCommentError("");
 
     try {
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       const res = await fetch(`${API_BASE_URL}/comment/create`, {
         method: "POST",
         headers: {
@@ -85,7 +85,7 @@ const CommentSection = ({ postId }) => {
     }
 
     try {
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       const res = await fetch(`${API_BASE_URL}/comment/likeComment/${commentId}`, {
         method: "PUT",
         credentials: 'include'
@@ -132,7 +132,7 @@ const CommentSection = ({ postId }) => {
         navigate('/sign-in');
         return;
       }
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL; 
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api'; 
       const res = await fetch(`${API_BASE_URL}/comment/delete/${commentToDelete}`,
         {
           method: 'DELETE',

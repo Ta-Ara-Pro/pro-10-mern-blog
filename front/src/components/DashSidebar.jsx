@@ -25,7 +25,7 @@ const DashSidebar = () => {
 
   const handelSignout = async () => {
     try {
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       const res = await fetch(`${API_BASE_URL}/user/signout`, {
         method: 'POST'
       });

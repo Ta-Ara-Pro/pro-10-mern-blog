@@ -13,7 +13,7 @@ const DashUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
         const res = await fetch(`${API_BASE_URL}/user/getusers`)
         const data = await res.json()
         console.log(data)
@@ -33,7 +33,7 @@ const DashUsers = () => {
   const handleShowMore = async () => {
     const startIndex = users.length;
     try {
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       const res = await fetch(`${API_BASE_URL}/user/getusers?startIndex=${startIndex}`)
       const data = await res.json()
       if (res.ok) {
@@ -55,7 +55,7 @@ const DashUsers = () => {
   const handleDeleteUser = async () => {
     setShowModal(false)
     try {
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       const res = await fetch(`${API_BASE_URL}/user/delete/${userIdToDelete}`,
         {
           method: 'DELETE',

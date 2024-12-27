@@ -51,7 +51,7 @@ const DashProfile = () => {
     image.append('public_id', fileName);
 
     try {
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       const response = await fetch(`${API_BASE_URL}/user/cloudinary`, {
         method: 'POST',
         body: image,
@@ -101,7 +101,7 @@ const DashProfile = () => {
     console.log('formData:', formData)
     try {
       dispatch(updateStart())
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       const response = await fetch(`${API_BASE_URL}/user/update/${currentUser._id}`, {
         method: 'PUT',
         headers: {
@@ -138,7 +138,7 @@ const DashProfile = () => {
     setShowModal(false);
     try {
       dispatch(deleteUserStart());
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       const res = await fetch(`${API_BASE_URL}/user/delete/${currentUser._id}`, {
         method: 'DELETE',
         credentials: 'include'
@@ -158,7 +158,7 @@ const DashProfile = () => {
   // =================================================
   const handelSignout = async () => {
     try {
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       const res = await fetch(`${API_BASE_URL}/user/signout`, {
         method: 'POST',
         credentials: 'include'

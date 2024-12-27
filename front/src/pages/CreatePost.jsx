@@ -35,7 +35,7 @@ const CreatePost = () => {
     banner.append('public_id', fileName)
     try {
       setImageUploadLoading(true)
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       const res = await fetch(`${API_BASE_URL}/user/cloudinary`, {
         method: 'POST',
         body: banner,
@@ -70,7 +70,7 @@ const CreatePost = () => {
 
     e.preventDefault();
     try {
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       const res = await fetch(`${API_BASE_URL}/post/create`, {
         method: 'POST',
         headers: {

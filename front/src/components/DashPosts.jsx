@@ -13,7 +13,7 @@ const DashPosts = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+        const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
         const res = await fetch(`${API_BASE_URL}/post/getposts?userId=${currentUser._id}`)
         const data = await res.json()
         console.log(data)
@@ -33,7 +33,7 @@ const DashPosts = () => {
   const handleShowMore = async () => {
     const startIndex = userPosts.length;
     try {
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       const res = await fetch(`${API_BASE_URL}/post/getposts?userId=${currentUser._id}&startIndex=${startIndex}`)
       const data = await res.json()
       if (res.ok) {
@@ -55,7 +55,7 @@ const DashPosts = () => {
   const handleDeletePost = async () => {
     setShowModal(false)
     try {
-      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       const res = await fetch(`${API_BASE_URL}/post/deletepost/${postIdToDelete}/${currentUser._id}`,
         {
           method: 'DELETE',
