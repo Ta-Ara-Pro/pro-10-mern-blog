@@ -45,6 +45,7 @@ export const signin = async(req, res, next) => {
         res.status(200).cookie('access_token', token, {
             httpOnly: true,
             sameSite: 'None', // Ensure the cookie is sent across domains
+            secure: true,  // Set to true when using HTTPS
              }).json(rest);
 
     } catch (error) {
