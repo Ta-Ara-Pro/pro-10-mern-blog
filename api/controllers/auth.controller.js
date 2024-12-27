@@ -46,6 +46,7 @@ export const signin = async(req, res, next) => {
             httpOnly: true,
             sameSite: 'None', // Ensure the cookie is sent across domains
             secure: true,  // Set to true when using HTTPS
+            path: '/', // Ensure the cookie is sent for all requests
              }).json(rest);
 
     } catch (error) {

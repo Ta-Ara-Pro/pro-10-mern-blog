@@ -15,11 +15,13 @@ const DashUsers = () => {
     const fetchUsers = async () => {
       try {
         const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
-        const res = await fetch(`${API_BASE_URL}/user/getusers`,
-          {
-             credentials: 'include'
-          }
-        )
+        const res = await fetch(`${API_BASE_URL}/user/getusers`, {
+          method: 'GET',
+          credentials: 'include', // Ensures cookies are sent
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
        
         if (res.ok) {
           const data = await res.json();
