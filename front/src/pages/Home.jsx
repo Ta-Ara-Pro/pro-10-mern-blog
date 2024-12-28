@@ -7,6 +7,31 @@ export default function Home() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    const fetchCookie = async () => {
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
+      try {
+        const res = await fetch(`${API_BASE_URL}/check-cookies`, {
+          method: 'GET',
+          credentials: 'include', // Ensure cookies are sent with the request
+        });
+  
+        if (!res.ok) {
+          console.error('Failed to fetch cookies:', res.statusText);
+          return;
+        }
+  
+        const data = await res.json();
+        console.log('Cookies:', data.cookies); // Log cookies received from the backend
+      } catch (error) {
+        console.error('Error fetching cookies:', error);
+      }
+    };
+  
+    fetchCookie();
+  }, []);
+  
+
+  useEffect(() => {
     const fetchPosts = async () => {
       const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
       console.log('API Base URL:', API_BASE_URL);
