@@ -16,8 +16,6 @@ const UpdatePost = () => {
   const navigate = useNavigate()
   const {postId} = useParams()
   const {currentUser} = useSelector(state => state.user)
-  console.log('formData:', formData)
-  console.log('postId:', postId)
 
   // =================================================
   // FETCHING POST FUNCTIOIN
@@ -45,6 +43,8 @@ const UpdatePost = () => {
               ...post
             }));
             console.log('Fetched post: ', post);
+            console.log('formData right after fetching and setting:', formData)
+
           }
         }
       };
@@ -117,7 +117,7 @@ const UpdatePost = () => {
     e.preventDefault();
     try {
       const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://mern-blog-api-p10.vercel.app/api';
-      const res = await fetch(`${API_BASE_URL}/api/post/update/${postId}/${currentUser._id}`, {
+      const res = await fetch(`${API_BASE_URL}/post/update/${postId}/${currentUser._id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
