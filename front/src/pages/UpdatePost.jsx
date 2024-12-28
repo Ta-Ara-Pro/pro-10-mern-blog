@@ -35,8 +35,17 @@ const UpdatePost = () => {
         }
         if (res.ok) {
           setPublishError(null);
-          setFormData( data.posts.filter((post) => post._id === postId)[0]);
-           console.log('post: ',data.posts.filter((post) => post._id === postId)[0])
+          // setFormData( ...formData, data.posts.filter((post) => post._id === postId)[0]);
+          //  console.log('post: ',data.posts.filter((post) => post._id === postId)[0])
+
+          const post = data.posts.find((post) => post._id === postId);
+          if (post) {
+            setFormData((prevFormData) => ({
+              ...prevFormData,
+              ...post
+            }));
+            console.log('Fetched post: ', post);
+          }
         }
       };
 
