@@ -36,9 +36,7 @@ const UpdatePost = () => {
         if (res.ok) {
           setPublishError(null);
           setFormData( data.posts.filter((post) => post._id === postId)[0]);
-          // console.log('data.posts.map: ', 
-          //   data.posts.filter((post) => post._id === postId)
-          // )
+           console.log('post: ',data.posts.filter((post) => post._id === postId)[0])
         }
       };
 
