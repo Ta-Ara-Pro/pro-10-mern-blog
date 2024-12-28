@@ -34,6 +34,7 @@ const corsOptions = {
     origin: 'https://mern-blog-front-p10.vercel.app', 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Allow cookies to be sent
+    secure: process.env.NODE_ENV === 'production', 
 };
 
 app.use(cors(corsOptions));
