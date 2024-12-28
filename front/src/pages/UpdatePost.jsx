@@ -37,11 +37,19 @@ const UpdatePost = () => {
           //  console.log('post: ',data.posts.filter((post) => post._id === postId)[0])
 
           const post = data.posts.find((post) => post._id === postId);
+          // if (post) {
+          //   setFormData((prevFormData) => ({
+          //     ...prevFormData,
+          //     ...post
+          //   }));
           if (post) {
-            setFormData((prevFormData) => ({
-              ...prevFormData,
-              ...post
-            }));
+            setFormData({
+              title: post.title,
+              category: post.category,
+              content: post.content,
+              image: post.image
+
+            });
             console.log('Fetched post: ', post);
             console.log('formData right after fetching and setting:', formData)
 
