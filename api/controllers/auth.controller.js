@@ -47,6 +47,8 @@ export const signin = async(req, res, next) => {
             sameSite: 'None', // Ensure the cookie is sent across domains
             secure: true,  // Set to true when using HTTPS
             path: '/', // Ensure the cookie is sent for all requests
+            domain: 'mern-blog-api-p10.vercel.app',
+            // secure: process.env.NODE_ENV === 'production', 
              }).json(rest);
 
              console.log("Token generated:", token);

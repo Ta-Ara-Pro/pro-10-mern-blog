@@ -34,7 +34,6 @@ const corsOptions = {
     origin: 'https://mern-blog-front-p10.vercel.app', 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Allow cookies to be sent
-    secure: process.env.NODE_ENV === 'production', 
 };
 
 app.use(cors(corsOptions));
@@ -55,6 +54,10 @@ app.use('/api/comment', commentRoutes)
 app.get('/', (req, res) => {
     res.send('Server is running!');
   });
+app.get('/api/check-cookies', (req, res) => {
+    res.status(200).json({ cookies: req.cookies });
+});
+ 
    
 
 // a middleware to handle errors more easily
