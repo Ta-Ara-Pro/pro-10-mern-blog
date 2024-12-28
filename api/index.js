@@ -55,6 +55,7 @@ app.get('/', (req, res) => {
     res.send('Server is running!');
   });
 app.get('/api/check-cookies', (req, res) => {
+    console.log('Received cookies:', req.cookies); 
     res.status(200).json({ cookies: req.cookies });
 });
  
